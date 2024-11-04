@@ -33,12 +33,19 @@ namespace SingleResponsibilityPrinciple
                 return false;
             }
 
+            if (tradeAmount < 1000 || tradeAmount > 1000000)
+            {
+                logger.LogWarning("Trade amount is not within valid range 1000-1000000: ", tradeData[1]);
+                return false;
+            }
+
             decimal tradePrice;
             if (!decimal.TryParse(tradeData[2], out tradePrice))
             {
                 logger.LogWarning("Trade price not a valid decimal: '{0}'", tradeData[2]);
                 return false;
             }
+
 
             return true;
         }
