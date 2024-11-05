@@ -28,7 +28,7 @@ namespace SingleResponsibilityPrinciple.AdoNet
             string azureConnectString = @"Server=tcp:cis3285-sql-server.database.windows.net,1433; Initial Catalog = Unit8_TradesDatabase; Persist Security Info=False; User ID=cis3285;Password=Saints4SQL; MultipleActiveResultSets = False; Encrypt = True; TrustServerCertificate = False; Connection Timeout = 60;";
             string tomConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=C:\Users\tgibbons\Documents\tradedatabase.mdf;Integrated Security=True;Connect Timeout=30";
             // Change the connection string used to match the one you want
-            logger.LogInfo("INFO: Connecting to AZURE cloud database... This may timeout the first time");
+            logger.LogInfo("Connecting to AZURE cloud database... This may timeout the first time");
             using (var connection = new SqlConnection(azureConnectString))
             {
                 connection.Open();

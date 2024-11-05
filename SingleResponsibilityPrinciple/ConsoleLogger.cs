@@ -9,18 +9,20 @@ namespace SingleResponsibilityPrinciple
         public void LogWarning(string message, params object[] args)
         {
             Console.WriteLine(string.Concat("WARN: ", message), args);
-            using (StreamWriter logfile = File.AppendText("log.xml"))
-            {
-                logfile.WriteLine("<log><type>WARN</type><message>" + message + "</message></log> ", args);
-            }
+            LogToFile("WARN", message, args);
         }
 
         public void LogInfo(string message, params object[] args)
         {
             Console.WriteLine(string.Concat("INFO: ", message), args);
+            LogToFile("INFO", message, args);
+        }
+
+        public void LogToFile(string type, string message, params object[] args)
+        {
             using (StreamWriter logfile = File.AppendText("log.xml"))
             {
-                logfile.WriteLine("<log><type>INFO</type><message>" + message + "</message></log> ", args);
+                logfile.WriteLine("<log><type>" + type + "</type><message>" + message + "</message></log>", args);
             }
         }
 
