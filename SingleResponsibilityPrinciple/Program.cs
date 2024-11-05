@@ -10,7 +10,9 @@ namespace SingleResponsibilityPrinciple
     {
         static void Main(string[] args)
         {
-            ILogger logger = new ConsoleLogger();
+            var consoleLogger = new ConsoleLogger();
+            ILogger logger = new LoggerXML(consoleLogger);
+            
             // Open up the local textfile as a stream
             String fileName = "SingleResponsibilityPrinciple.trades.txt";
             Stream tradeStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(fileName);
